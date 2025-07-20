@@ -1,0 +1,14 @@
+FROM alpine:latest
+
+ARG BACKUP_TIME=15
+
+RUN apk add --no-cache bash zip
+
+VOLUME ["/server/world", "/backups"]
+
+COPY data/backup.sh /backup.sh
+RUN chmod +x /backup.sh
+
+RUN echo "*/${BACKUP_TIME} * * * * /backup.sh >> /var/log/backup.log 2>&1" > /etc/crontabs/root
+
+CMD ["crond", "-f", "-L", "/var/log/cron.log"]
