@@ -6,16 +6,6 @@ MINRAM="${JVM_MAX_RAM:-4G}"
 FORGE_VERSION="${FORGE_VERSION:-57.0.3}"
 MC_VERSION="${MC_VERSION:-1.21.7}"
 
-backup() {
-  echo "🗃️  Creando backup del mundo..."
-  TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-  mkdir -p /backups
-  zip -r "/backups/world_backup_${TIMESTAMP}.zip" /server/world > /dev/null
-  echo "✅ Backup guardado en /backups/world_backup_${TIMESTAMP}.zip"
-}
-
-trap backup SIGTERM SIGINT
-
 if [ -f server.properties ]; then
   echo "Estableciendo 'online-mode=false' en server.properties"
   sed 's/^online-mode=true/online-mode=false/' server.properties > /tmp/server.properties.edit

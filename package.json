@@ -1,0 +1,25 @@
+{
+  "name": "minecraft-servidor-version-dinamica",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "docker-compose up --build",
+    "dev": "docker-compose up -d",
+    "stop": "docker-compose down",
+    "start": "docker-compose up -d",
+    "logs": "docker-compose logs -f"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcoGamer304/Docker_dinamic_versions_minecraft_server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarcoGamer304/Docker_dinamic_versions_minecraft_server/issues"
+  },
+  "homepage": "https://github.com/MarcoGamer304/Docker_dinamic_versions_minecraft_server#readme",
+  "description": ""
+}
