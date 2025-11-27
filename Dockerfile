@@ -1,9 +1,9 @@
-FROM openjdk:21-jdk-slim
+FROM eclipse-temurin:8-jdk
 
 WORKDIR /server
 
-ARG FORGE_VERSION=57.0.3
-ARG MC_VERSION=1.21.7
+ARG FORGE_VERSION=14.23.5.2859
+ARG MC_VERSION=1.12.2
 
 RUN apt-get update && apt-get install -y \
     curl \
@@ -16,6 +16,7 @@ RUN java -jar forge-installer.jar --installServer
 
 COPY ./data/entrypoint.sh /server/entrypoint.sh
 COPY ./data/server.properties /server/server.properties
+COPY ./mods/ /server/mods/
 
 RUN echo "eula=true" > eula.txt
 
